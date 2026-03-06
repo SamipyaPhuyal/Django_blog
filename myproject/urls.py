@@ -37,6 +37,8 @@ urlpatterns = [
 
     path('profile/update/',user_views.update,name='profile-update'),
 
+    path('users/',user_views.userlist,name='users-list'),
+
     path('', include('blog.urls')),
 ]
 if settings.DEBUG:
