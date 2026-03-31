@@ -51,6 +51,9 @@ def register(request):
         if form.is_valid():
             form.save()
             username = form.cleaned_data.get('username')
+            if username in User.objects.values_list('username', flat=True):
+                messages.error(request, 'Username already exists. Please choose a different username.')
+                return redirect('register')
             messages.success(request,'Account has been created You can now login')
             return redirect("login")
     else:
